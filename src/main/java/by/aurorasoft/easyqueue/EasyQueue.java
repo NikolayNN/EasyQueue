@@ -104,6 +104,18 @@ public class EasyQueue<T> {
         return new EasyQueueState<>(new ArrayList<>(entries), maxSize, lastSentIndex, lastConfirmedIndex);
     }
 
+    public void restoreState(EasyQueueState<T> state) {
+        lock.lock();
+        try {
+            this.entries.clear();
+            this.entries.addAll(state.getEntries());
+            this.lastConfirmedIndex = state.getLastConfirmedIndex();
+            this.lastSentIndex = state.getLastSentIndex();
+        } finally {
+            lock.unlock();
+        }
+    }
+
     public EasyQueueState<T> shutdown() {
         lock.lock();
         try {
