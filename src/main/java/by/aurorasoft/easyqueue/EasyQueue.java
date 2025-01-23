@@ -94,7 +94,7 @@ public class EasyQueue<T> {
     public int size() {
         lock.lock();
         try {
-            return entries.size();
+            return (entries.size() - lastConfirmedIndex) - 1;
         } finally {
             lock.unlock();
         }

@@ -113,6 +113,32 @@ class EasyQueueTest {
     }
 
     @Test
+    void testSizeAfterConfirm1() {
+        EasyQueue<String> queue = new EasyQueue<>(5);
+
+        queue.add("A");
+        queue.add("B");
+
+        queue.pollBatch(1);
+        queue.confirmBatch();
+
+        assertEquals(1, queue.size());
+    }
+
+    @Test
+    void testSizeAfterConfirm2() {
+        EasyQueue<String> queue = new EasyQueue<>(5);
+
+        queue.add("A");
+        queue.add("B");
+
+        queue.pollBatch(2);
+        queue.confirmBatch();
+
+        assertEquals(0, queue.size());
+    }
+
+    @Test
     void testShutdownPreventsAdd() {
         EasyQueue<String> queue = new EasyQueue<>(3);
         queue.add("A");
