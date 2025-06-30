@@ -13,7 +13,20 @@
 
 ## Installation
 
-Add the `EasyQueue` source code to your project or package it as a JAR file for reuse in other applications.
+```
+<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.NikolayNN</groupId>
+	<artifactId>easyqueue</artifactId>
+	<version>Tag</version>
+</dependency>
+```
 
 ---
 
