@@ -116,6 +116,10 @@ public class EasyQueue<T> {
         }
     }
 
+    public int getMaxSize() {
+        return maxSize;
+    }
+
     public EasyQueueState<T> shutdown() {
         lock.lock();
         try {
